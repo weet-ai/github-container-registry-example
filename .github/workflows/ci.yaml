@@ -5,8 +5,6 @@ permissions:
 name: Build and Push Docker Image
 
 on:
-  push:
-    branches: [ main ]          # Or specify a branch or tag as you prefer
   workflow_dispatch:
 
 jobs:
