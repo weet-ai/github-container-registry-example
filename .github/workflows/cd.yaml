@@ -15,12 +15,14 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: Deploy initial Container App
-        uses: azure/container-apps-deploy-action@v1
-        with:
-          resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
-          containerAppName: ${{ secrets.AZURE_CONTAINER_APP_NAME }}
-          imageToDeploy: nginx:alpine3.22
+
+      # Simple hack to deploy initial Container App
+      # - name: Deploy initial Container App
+      #  uses: azure/container-apps-deploy-action@v1
+      #  with:
+      #    resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
+      #    containerAppName: ${{ secrets.AZURE_CONTAINER_APP_NAME }}
+      #    imageToDeploy: nginx:alpine3.22
 
       - name: Configure Container App registry credentials
         run: |
@@ -37,3 +39,6 @@ jobs:
           resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
           containerAppName: ${{ secrets.AZURE_CONTAINER_APP_NAME }}
           imageToDeploy: ghcr.io/${{ github.repository }}:latest
+          environmentVariables: |
+            OPENAI_API_URL=${{ secrets.OPENAI_API_URL }}
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
