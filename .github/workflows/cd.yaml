@@ -39,6 +39,4 @@ jobs:
           resourceGroup: ${{ secrets.AZURE_RESOURCE_GROUP }}
           containerAppName: ${{ secrets.AZURE_CONTAINER_APP_NAME }}
           imageToDeploy: ghcr.io/${{ github.repository }}:latest
-          environmentVariables: |
-            OPENAI_API_URL=${{ secrets.OPENAI_API_URL }}
-            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          environmentVariables: "OPENAI_API_URL=${{ secrets.OPENAI_API_URL }} OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}"
