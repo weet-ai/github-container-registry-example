@@ -26,4 +26,4 @@ ENV PYTHONPATH="/app/.venv/bin"
 EXPOSE 8000
 
 # Set the entrypoint to run FastAPI application
-ENTRYPOINT ["uv", "run", "uvicorn", "src.myapp.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["uv", "run", "uvicorn", "src.myagent.api:app", "--host", "0.0.0.0", "--port", "8000"]
